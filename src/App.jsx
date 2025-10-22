@@ -1,29 +1,23 @@
-import React from 'react'
-import Navbar from './components/Navbar.jsx'
-import Hero from './components/Hero.jsx'
-import Promo from './components/Promo.jsx'
-import WhyChooseUs from './components/WhyChooseUs.jsx'
-import BestSellers from './components/BestSellers.jsx'
-import Testimonial from './components/Testimonial.jsx'
-import Team from './components/Team.jsx'
-import Blog from './components/Blog.jsx'
-import Partners from './components/Partners.jsx'
-import Footer from './components/Footer.jsx'
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import Philosophy from "./components/Philosophy";
+import Products from "./components/Products";
+import WhyChoose from "./components/WhyChoose";
+import Testimonials from "./components/Testimonials";
+import CTA from "./components/CTA";
+import Footer from "./components/Footer";
 
-
-export default function App(){
-return (
-<div className="min-h-screen bg-white">
-<Navbar />
-<Hero />
-<Promo />
-<WhyChooseUs />
-<BestSellers />
-<Testimonial />
-<Team />
-<Blog />
-<Partners />
-<Footer />
-</div>
-)
+export default function App() {
+  return (
+    <div className="min-h-screen bg-white text-gray-900 dark:bg-gray-950 dark:text-white">
+      <Navbar />
+      <Hero />
+      <Products />
+      <Philosophy />
+      <WhyChoose />
+      <Testimonials />
+      <CTA />
+      <Footer />
+    </div>
+  );
 }
