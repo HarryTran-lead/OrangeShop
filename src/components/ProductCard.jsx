@@ -2,7 +2,7 @@ import { Star, Info, ShoppingCart } from "lucide-react";
 
 const formatVND = (n) => new Intl.NumberFormat("vi-VN").format(n);
 
-export default function ProductCard({ product, onDetails }) {
+export default function ProductCard({ product, onDetails, onOrder }) {
   const full = Math.round(product.rating || 5);
   const empty = Math.max(0, 5 - full);
 
@@ -59,6 +59,7 @@ export default function ProductCard({ product, onDetails }) {
             </button>
 
             <button
+              onClick={onOrder}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-lg
                          bg-gradient-to-r from-orange-600 to-orange-500 text-white
                          text-sm font-semibold hover:shadow-lg hover:-translate-y-0.5 active:scale-95 transition-all"

@@ -15,7 +15,7 @@ import {
 
 const formatVND = (n) => new Intl.NumberFormat("vi-VN").format(n);
 
-export default function ProductModal({ product, onClose }) {
+export default function ProductModal({ product, onClose, onOrder }) {
   const overlayRef = useRef(null);
 
   // Khóa scroll body khi mở
@@ -274,8 +274,11 @@ export default function ProductModal({ product, onClose }) {
                 Đóng lại
               </button>
 
-              <a
-                href="#contact"
+              <button
+                onClick={() => {
+                  onOrder?.();
+                  onClose?.();
+                }}
                 className="
         inline-flex items-center justify-center gap-2
         px-3 sm:px-4 py-2 rounded-lg
@@ -286,7 +289,7 @@ export default function ProductModal({ product, onClose }) {
               >
                 <ShoppingCart className="w-4 h-4" />
                 <span>Đặt Hàng Ngay</span>
-              </a>
+              </button>
             </div>
           </div>
         </motion.div>

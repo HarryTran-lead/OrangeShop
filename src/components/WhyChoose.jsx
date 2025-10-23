@@ -19,7 +19,7 @@ export default function WhyChoose() {
   const [activeFeature, setActiveFeature] = useState(0);
 
   return (
-    <section id="why" className="py-20 bg-white dark:bg-gray-900">
+    <section id="why" className="py-16 sm:py-20 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">
           <SectionTitle

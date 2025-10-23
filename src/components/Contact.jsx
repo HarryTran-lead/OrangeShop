@@ -1,8 +1,6 @@
-import { Send, Phone, CheckCircle } from "lucide-react";
+import { Send, Phone, CheckCircle, Mail } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-
-// Brand icons (react-icons)
 import { FaFacebookMessenger } from "react-icons/fa";
 import { MdTextsms } from "react-icons/md";
 
@@ -13,6 +11,9 @@ export default function QuickContactSection() {
     sms: "sms:+84900000000?body=Chao%20Cam%20Lanh%2C%20toi%20muon%20dat%20hang",
     tel: "tel:+84900000000",
     hotline: "0366 750 106",
+    email:
+      "mailto:hello@camlanh.vn?subject=%C4%90%E1%BA%B7t%20h%C3%A0ng%20Cam%20L%C3%A0nh&body=Ch%C3%A0o%20Cam%20L%C3%A0nh%2C%20t%C3%B4i%20mu%E1%BB%91n%20%C4%91%E1%BA%B7t%20h%C3%A0ng%3A%20...",
+    emailText: "hello@camlanh.vn",
   };
 
   const [copied, setCopied] = useState(false);
@@ -41,7 +42,7 @@ export default function QuickContactSection() {
 
       <div className="relative mx-auto max-w-5xl px-4 sm:px-6">
         {/* Header */}
-        <div className="mx-auto max-w-2xl text-center mb-8 sm:mb-10">
+        <div className="mx-auto max-w-2xl text-center mb-6 sm:mb-8">
           <div className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-orange-100 to-amber-100 px-4 py-2 dark:from-orange-900/20 dark:to-amber-900/20">
             <Send className="h-4 w-4 text-orange-600" />
             <span className="text-sm font-semibold text-orange-700 dark:text-orange-300">
@@ -72,7 +73,7 @@ export default function QuickContactSection() {
           "
         >
           {/* Buttons grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
             {/* Messenger */}
             <a
               href={LINKS.messenger}
@@ -112,6 +113,22 @@ export default function QuickContactSection() {
                 className="h-6 w-6 transition-transform duration-300 group-hover:scale-110"
               />
               <span className="group-hover:text-gray-700">Zalo</span>
+            </a>
+            <a
+              href={LINKS.email}
+              className="
+                group inline-flex items-center justify-center gap-2
+                rounded-2xl px-5 py-4 text-base font-semibold
+                bg-white/90 dark:bg-gray-800/70
+                ring-1 ring-orange-200/60 dark:ring-gray-600
+                hover:bg-indigo-600 dark:hover:bg-indigo-500 hover:text-white transition
+                shadow-sm hover:shadow-md
+                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-800
+              "
+              aria-label={`Email ${LINKS.emailText}`}
+            >
+              <Mail className="h-5 w-5 text-indigo-600 group-hover:text-white group-hover:scale-110 transition-transform duration-300" />
+              Email
             </a>
 
             {/* SMS */}
@@ -154,9 +171,17 @@ export default function QuickContactSection() {
               Hotline:{" "}
               <a
                 href={LINKS.tel}
-                className="font-semibold text-orange-600 dark:text-orange-400 hover:underline"
+                className="font-semibold text-orange-600 dark:text-orange-300 hover:underline underline-offset-4"
               >
                 {LINKS.hotline}
+              </a>
+              <span className="mx-2 text-gray-400">•</span>
+              Email:{" "}
+              <a
+                href={LINKS.email}
+                className="font-semibold text-indigo-600 dark:text-indigo-300 hover:underline underline-offset-4"
+              >
+                {LINKS.emailText}
               </a>
             </div>
 
