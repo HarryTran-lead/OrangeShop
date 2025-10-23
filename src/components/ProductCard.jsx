@@ -50,7 +50,7 @@ export default function ProductCard({ product, onDetails }) {
           <div className="flex items-center gap-2">
             <button
               onClick={onDetails}
-              className="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-700
+              className="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-200 dark:bg-gray-600 dark:border-gray-700
                          text-sm font-semibold hover:border-orange-500 hover:text-orange-600 dark:hover:text-orange-400
                          transition-colors"
             >

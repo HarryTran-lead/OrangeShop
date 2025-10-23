@@ -46,7 +46,7 @@ export default function Philosophy() {
               <RevealOnView
                 key={idx}
                 type="scaleIn"
-                className="group bg-white dark:bg-gray-900 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-orange-100/40 dark:border-orange-900/30 overflow-hidden"
+                className="group bg-white dark:bg-gray-700 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-orange-100/40 dark:border-orange-900/30 overflow-hidden"
               >
                 <div className="relative mb-3 flex justify-center">
                   <div className="relative w-16 h-16 bg-gradient-to-br from-orange-500 to-amber-500 rounded-2xl grid place-items-center text-white shadow-lg">
@@ -136,7 +136,7 @@ export default function Philosophy() {
                 >
                   <RevealOnView
                     type="scaleIn"
-                    className="group relative bg-white dark:bg-gray-900 rounded-3xl p-8 shadow-md hover:shadow-lg transition-all duration-500 border-2 border-transparent hover:border-orange-200 dark:hover:border-orange-800 overflow-hidden"
+                    className="group relative bg-white dark:bg-gray-700 rounded-3xl p-8 shadow-md hover:shadow-lg transition-all duration-500 border-2 border-transparent hover:border-orange-200 dark:hover:border-orange-800 overflow-hidden"
                   >
                     <div className="relative mb-3 flex justify-center">
                       <div className="relative w-16 h-16 bg-gradient-to-br from-orange-500 to-amber-500 rounded-full grid place-items-center text-white shadow-lg group-hover:rotate-[360deg] transition-transform duration-500">
@@ -169,7 +169,7 @@ export default function Philosophy() {
           <div className="max-w-3xl mx-auto text-center mt-10 sm:mt-40">
             <div
               className="
-        bg-white dark:bg-gray-900
+        bg-white dark:bg-gray-700
         backdrop-blur-sm
         rounded-2xl p-8
         border border-orange-100 dark:border-orange-800

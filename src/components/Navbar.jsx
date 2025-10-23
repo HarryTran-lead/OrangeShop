@@ -13,7 +13,6 @@ const NAVS = [
   { id: "#products", label: "Sản Phẩm" },
   { id: "#philosophy", label: "Triết Lý" },
   { id: "#why", label: "Vì Sao Chọn" },
-  { id: "#testimonials", label: "Đánh Giá" },
   { id: "#contact", label: "Liên Hệ" },
 ];
 
@@ -25,7 +24,6 @@ export default function Navbar() {
     120
   );
 
-  // Theme state (để đổi nhãn tooltip)
   const [isDark, setIsDark] = useState(false);
   useEffect(() => {
     setIsDark(document.documentElement.classList.contains("dark"));
@@ -35,7 +33,6 @@ export default function Navbar() {
     setIsDark((d) => !d);
   };
 
-  // Shadow on scroll
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
@@ -43,7 +40,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Mobile menu
   const [open, setOpen] = useState(false);
   const panelRef = useRef(null);
 
@@ -65,7 +61,6 @@ export default function Navbar() {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
-  // Variants cho menu
   const panelVariants = {
     hidden: { y: "-10%", opacity: 0 },
     visible: {
@@ -75,7 +70,6 @@ export default function Navbar() {
     },
     exit: { y: "-8%", opacity: 0, transition: { duration: 0.2 } },
   };
-
   const overlayVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { duration: 0.2 } },
@@ -85,111 +79,139 @@ export default function Navbar() {
   const handleNavClick = (id) => (e) => {
     e.preventDefault();
     setOpen(false);
-    // đợi panel đóng 1 nhịp để scroll mượt
     setTimeout(() => scrollTo(id)(e), 10);
   };
 
+  // ---- NEW: Fixed header + spacer chiều cao động
+  const headerRef = useRef(null);
+  const [headerH, setHeaderH] = useState(64); // fallback h-16
+
+  useEffect(() => {
+    if (!headerRef.current) return;
+    const el = headerRef.current;
+    const ro = new ResizeObserver(() => {
+      setHeaderH(el.offsetHeight || 64);
+    });
+    ro.observe(el);
+    // cập nhật ngay lần đầu
+    setHeaderH(el.offsetHeight || 64);
+
+    // cập nhật khi viewport thay đổi (font-size, safe-area, vv.)
+    const onResize = () => setHeaderH(el.offsetHeight || 64);
+    window.addEventListener("resize", onResize);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", onResize);
+    };
+  }, []);
+  // ---- END NEW
+
   return (
-    <header
-      className={`sticky top-0 z-50 backdrop-blur-lg border-b transition-all duration-300
-        ${
+    <>
+      <header
+        ref={headerRef}
+        className={[
+          "fixed inset-x-0 top-0 z-50 border-b transition-all duration-300",
+          // nền & blur đổi theo trạng thái scroll
           scrolled
-            ? "shadow-md bg-white/95 dark:bg-gray-800/95"
-            : "bg-white/90 dark:bg-gray-800/90"
-        }
-        border-gray-200 dark:border-gray-800`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <a
-            href="#hero"
-            onClick={scrollTo("#hero")}
-            className="flex items-center gap-3"
-          >
-            <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl grid place-items-center text-white font-bold shadow-sm shadow-orange-200/50 dark:shadow-none">
-              CL
-            </div>
-            <div>
-              <div className="font-bold text-lg text-gray-900 dark:text-white">
-                Cam Lành
+            ? "bg-white/55 dark:bg-gray-900/50 backdrop-blur-xl shadow-sm ring-1 ring-gray-900/5 dark:ring-white/10 border-transparent"
+            : "bg-white/95 dark:bg-gray-900/90 backdrop-blur-lg border-gray-200 dark:border-gray-800",
+        ].join(" ")}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo */}
+            <a
+              href="#hero"
+              onClick={scrollTo("#hero")}
+              className="flex items-center gap-3"
+            >
+              <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl grid place-items-center text-white font-bold shadow-sm shadow-orange-200/50 dark:shadow-none">
+                CL
               </div>
-              <div className="text-xs text-gray-500 dark:text-gray-400">
-                Triết lý sống xanh
+              <div>
+                <div className="font-bold text-lg text-gray-900 dark:text-white">
+                  Cam Lành
+                </div>
+                <div className="text-xs text-gray-500 dark:text-gray-400">
+                  Triết lý sống xanh
+                </div>
               </div>
-            </div>
-          </a>
+            </a>
 
-          {/* Nav items (Desktop) */}
-          <nav className="hidden md:flex items-center gap-6">
-            {NAVS.map((n) => (
-              <a
-                key={n.id}
-                href={n.id}
-                onClick={scrollTo(n.id)}
-                className={`text-sm font-medium transition-colors hover:text-orange-600 dark:hover:text-orange-400 ${
-                  active === n.id
-                    ? "text-orange-600 dark:text-orange-400"
-                    : "text-gray-700 dark:text-gray-200"
-                }`}
-              >
-                {n.label}
-              </a>
-            ))}
-          </nav>
-
-          {/* Actions */}
-          <div className="flex items-center gap-2 md:gap-3">
-            {/* Theme toggle (desktop + tooltip) */}
-            <div className="hidden md:block">
-              <Tooltip
-                arrow
-                title={
-                  isDark ? "Chuyển sang Light mode" : "Chuyển sang Dark mode"
-                }
-              >
-                <button
-                  onClick={onToggleTheme}
-                  className="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-300"
-                  aria-label="Toggle theme"
+            {/* Nav items (Desktop) */}
+            <nav className="hidden md:flex items-center gap-6">
+              {NAVS.map((n) => (
+                <a
+                  key={n.id}
+                  href={n.id}
+                  onClick={scrollTo(n.id)}
+                  className={`text-sm font-medium transition-colors hover:text-orange-600 dark:hover:text-orange-400 ${
+                    active === n.id
+                      ? "text-orange-600 dark:text-orange-400"
+                      : "text-gray-700 dark:text-gray-200"
+                  }`}
                 >
-                  <Sun className="w-5 h-5 text-yellow-400 hidden dark:block" />
-                  <Moon className="w-5 h-5 block dark:hidden text-gray-800" />
-                </button>
-              </Tooltip>
+                  {n.label}
+                </a>
+              ))}
+            </nav>
+
+            {/* Actions */}
+            <div className="flex items-center gap-2 md:gap-3">
+              {/* Theme toggle (desktop + tooltip) */}
+              <div className="hidden md:block">
+                <Tooltip
+                  arrow
+                  title={
+                    isDark ? "Chuyển sang Light mode" : "Chuyển sang Dark mode"
+                  }
+                >
+                  <button
+                    onClick={onToggleTheme}
+                    className="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-300"
+                    aria-label="Toggle theme"
+                  >
+                    <Sun className="w-5 h-5 text-yellow-400 hidden dark:block" />
+                    <Moon className="w-5 h-5 block dark:hidden text-gray-800" />
+                  </button>
+                </Tooltip>
+              </div>
+
+              {/* Theme toggle (mobile) */}
+              <button
+                onClick={onToggleTheme}
+                className="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-300"
+                aria-label="Toggle theme"
+              >
+                <Sun className="w-5 h-5 text-yellow-400 hidden dark:block" />
+                <Moon className="w-5 h-5 block dark:hidden text-gray-800" />
+              </button>
+
+              {/* Mobile menu toggle */}
+              <button
+                onClick={() => setOpen(true)}
+                className="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-300"
+                aria-label="Open menu"
+                aria-haspopup="dialog"
+                aria-expanded={open}
+                aria-controls="mobile-menu-panel"
+              >
+                <Menu className="w-5 h-5" />
+              </button>
             </div>
-
-            {/* Theme toggle (mobile) */}
-            <button
-              onClick={onToggleTheme}
-              className="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-300"
-              aria-label="Toggle theme"
-            >
-              <Sun className="w-5 h-5 text-yellow-400 hidden dark:block" />
-              <Moon className="w-5 h-5 block dark:hidden text-gray-800" />
-            </button>
-
-            {/* Mobile menu toggle */}
-            <button
-              onClick={() => setOpen(true)}
-              className="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-300"
-              aria-label="Open menu"
-              aria-haspopup="dialog"
-              aria-expanded={open}
-              aria-controls="mobile-menu-panel"
-            >
-              <Menu className="w-5 h-5" />
-            </button>
           </div>
         </div>
-      </div>
+      </header>
+
+      {/* Spacer để nội dung không bị chèn dưới header fixed */}
+      <div style={{ height: headerH }} aria-hidden="true" />
 
       {/* Mobile Menu (Overlay + Panel) via PORTAL */}
       {createPortal(
         <AnimatePresence>
           {open && (
             <>
-              {/* Overlay: tách khỏi header để không bị clip/che */}
               <motion.div
                 key="overlay"
                 initial="hidden"
@@ -201,7 +223,6 @@ export default function Navbar() {
                 aria-hidden="true"
               />
 
-              {/* Panel nổi phía trên */}
               <motion.div
                 key="panel"
                 id="mobile-menu-panel"
@@ -213,17 +234,17 @@ export default function Navbar() {
                 variants={panelVariants}
                 ref={panelRef}
                 className="
-    fixed
-    top-[calc(env(safe-area-inset-top,0px)+8px)]
-    inset-x-4 sm:inset-x-6
-    z-[1010]
-    w-auto max-w-sm mx-auto
-    rounded-2xl
-    bg-white/95 dark:bg-gray-900/95
-    border border-gray-200 dark:border-gray-700
-    shadow-2xl p-4
-    max-h-[calc(100dvh-32px)] overflow-auto  
-  "
+                  fixed
+                  top-[calc(env(safe-area-inset-top,0px)+8px)]
+                  inset-x-4 sm:inset-x-6
+                  z-[1010]
+                  w-auto max-w-sm mx-auto
+                  rounded-2xl
+                  bg-white/95 dark:bg-gray-900/95
+                  border border-gray-200 dark:border-gray-700
+                  shadow-2xl p-4
+                  max-h-[calc(100dvh-32px)] overflow-auto
+                "
               >
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
@@ -274,7 +295,6 @@ export default function Navbar() {
                   ))}
                 </nav>
 
-                {/* Quick actions */}
                 <div className="mt-4 flex gap-3">
                   <a
                     href="#products"
@@ -304,6 +324,6 @@ export default function Navbar() {
         </AnimatePresence>,
         document.body
       )}
-    </header>
+    </>
   );
 }

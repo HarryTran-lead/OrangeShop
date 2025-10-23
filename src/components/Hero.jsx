@@ -10,7 +10,7 @@ export default function Hero() {
       className="relative overflow-hidden pt-12 md:pt-14 lg:pt-14 pb-16 lg:pb-20"
     >
       {/* background softly */}
-      <div className="absolute inset-0 bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 dark:from-gray-800 dark:via-gray-850 dark:to-gray-900 opacity-50" />
+      <div className="absolute inset-0 bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 dark:from-gray-700 dark:via-gray-800 dark:to-gray-850 opacity-50" />
       <div className="absolute top-20 right-10 w-72 h-72 bg-orange-300 dark:bg-orange-900 rounded-full blur-3xl opacity-20" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">

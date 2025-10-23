@@ -245,24 +245,47 @@ export const whyChoose = [
   {
     icon: "Award",
     title: "VietGAP Chứng Nhận",
-    desc: "Cam tươi đạt chuẩn an toàn thực phẩm quốc gia",
+    desc: "Cam tươi đạt chuẩn an toàn thực phẩm quốc gia, quy trình canh tác, thu hái và bảo quản tuân thủ VietGAP.",
   },
   {
     icon: "Package",
     title: "Chế Biến Sạch",
-    desc: "Quy trình khép kín, không phẩm màu tổng hợp",
+    desc: "Quy trình khép kín, không phẩm màu tổng hợp, giữ trọn hương vị tự nhiên và dinh dưỡng của vỏ cam.",
   },
   {
     icon: "Clock",
     title: "Giao Trong Ngày",
-    desc: "Đặt hàng sáng, nhận hàng chiều tại TP.HCM",
+    desc: "Đặt buổi sáng – nhận buổi chiều tại TP.HCM, bảo đảm tươi mới với quy trình đóng gói giữ chất lượng.",
   },
   {
     icon: "Shield",
     title: "Cam Kết 100%",
-    desc: "Hoàn tiền nếu không hài lòng về chất lượng",
+    desc: "Hoàn tiền nếu không hài lòng về chất lượng, đổi trả nhanh gọn, hỗ trợ tận tâm.",
+  },
+
+  // ✨ Thêm 4 mục mới
+  {
+    icon: "Leaf",
+    title: "Minh Bạch Nguồn Gốc",
+    desc: "Truy xuất nông trại, ngày hái và lô sản xuất rõ ràng, minh bạch từ trang trại tới bàn ăn.",
+  },
+  {
+    icon: "Recycle",
+    title: "Bao Bì Xanh",
+    desc: "Ưu tiên vật liệu tái chế/dễ phân hủy, giảm thiểu nhựa dùng một lần, thân thiện môi trường.",
+  },
+  {
+    icon: "Truck",
+    title: "Giao Liên Tỉnh",
+    desc: "Đóng gói tiêu chuẩn lạnh/khô phù hợp, gửi nhanh đến các tỉnh lân cận, hạn chế dập nát.",
+  },
+  {
+    icon: "Users",
+    title: "Hỗ Trợ Tận Tâm",
+    desc: "Tư vấn khẩu vị – combo phù hợp, hỗ trợ đổi/trả trong 24–48 giờ với quy trình đơn giản.",
   },
 ];
+
 export const testimonials = [
   {
     name: "Lan Anh",
