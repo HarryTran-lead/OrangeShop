@@ -49,7 +49,7 @@ export default function WhyChoose() {
                     "group p-4 sm:p-5 rounded-2xl border transition-all duration-500 cursor-pointer transform hover:scale-105",
                     "border-gray-200 dark:border-gray-700 dark:hover:border-orange-400/40 hover:border-orange-200 hover:shadow-xl",
                     activeFeature === index
-                      ? "bg-gradient-to-br from-orange-50 to-orange-100 border-orange-300 dark:from-orange-900/30 dark:to-orange-800/20 dark:border-orange-400/60 dark:shadow-[0_0_10px_rgba(251,146,60,0.25)]"
+                      ? "bg-gradient-to-br from-orange-50 to-orange-50 border-orange-300 dark:from-orange-900/30 dark:to-orange-800/20 dark:border-orange-400/60 dark:shadow-[0_0_10px_rgba(251,146,60,0.25)]"
                       : "bg-white dark:bg-gray-800",
                   ].join(" ")}
                   onMouseEnter={() => setActiveFeature(index)}

@@ -4,6 +4,7 @@ import Philosophy from "./components/Philosophy";
 import Products from "./components/Products";
 import WhyChoose from "./components/WhyChoose";
 import Contact from "./components/Contact";
+import SurveyQRSection from "./components/SurveyQRSection";
 import Footer from "./components/Footer";
 
 export default function App() {
@@ -15,6 +16,7 @@ export default function App() {
       <Philosophy />
       <WhyChoose />
       <Contact />
+      <SurveyQRSection />
       <Footer />
     </div>
   );

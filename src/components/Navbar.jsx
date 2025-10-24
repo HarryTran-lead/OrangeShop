@@ -14,6 +14,7 @@ const NAVS = [
   { id: "#philosophy", label: "Triết Lý" },
   { id: "#why", label: "Vì Sao Chọn" },
   { id: "#contact", label: "Liên Hệ" },
+  { id: "#survey", label: "Khảo sát" },
 ];
 
 export default function Navbar() {
