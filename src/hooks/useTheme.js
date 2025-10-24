@@ -2,18 +2,21 @@ import { useEffect } from "react";
 
 export default function useTheme() {
   useEffect(() => {
+    // đọc theme đã lưu
     const saved = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia?.(
-      "(prefers-color-scheme: dark)"
-    ).matches;
-    const theme = saved ?? (prefersDark ? "dark" : "light");
+
+    // nếu đã có, dùng nó; nếu chưa có, ALWAYS "light"
+    const theme = saved ?? "light";
+
     document.documentElement.classList.toggle("dark", theme === "dark");
   }, []);
 
   const toggle = () => {
     const isDark = document.documentElement.classList.contains("dark");
-    document.documentElement.classList.toggle("dark", !isDark);
-    localStorage.setItem("theme", !isDark ? "dark" : "light");
+    const next = !isDark ? "dark" : "light";
+
+    document.documentElement.classList.toggle("dark", next === "dark");
+    localStorage.setItem("theme", next);
   };
 
   return { toggle };
