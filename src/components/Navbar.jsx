@@ -124,12 +124,22 @@ export default function Navbar() {
             {/* Logo */}
             <a
               href="#hero"
-              onClick={scrollTo("#hero")}
-              className="flex items-center gap-3"
+              onClick={(e) => {
+                e.preventDefault();
+                document
+                  .querySelector("#hero")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="flex items-center gap-2"
             >
-              <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl grid place-items-center text-white font-bold shadow-sm shadow-orange-200/50 dark:shadow-none">
-                CL
-              </div>
+              <img
+                src="/images/Orange_Logo.png"
+                alt="Cam Lành logo"
+                className="w-12 h-12 shadow-orange-200/50 dark:shadow-none object-contain"
+                width={40}
+                height={40}
+                loading="eager"
+              />
               <div>
                 <div className="font-bold text-lg text-gray-900 dark:text-white">
                   Cam Lành

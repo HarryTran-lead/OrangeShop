@@ -41,7 +41,7 @@ export default function Products() {
     tel: "tel:+84967469298",
     hotline: "0967 469 298",
 
-    // 👇 cung cấp thông tin để ContactModal tự build Gmail compose/deep link
+    //  cung cấp thông tin để ContactModal tự build Gmail compose/deep link
     emailAddress: EMAIL.address,
     emailSubject: EMAIL.subject,
     emailBodyLines: EMAIL.bodyLines,
