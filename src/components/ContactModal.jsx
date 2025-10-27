@@ -1,9 +1,21 @@
+// ContactModal.jsx
 import { useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Send, Phone, Mail } from "lucide-react";
 import { FaFacebookMessenger } from "react-icons/fa";
 import { MdTextsms } from "react-icons/md";
 import { useIsMobileCallDevice } from "../hooks/useIsMobileCallDevice";
+
+function buildGmailCompose({ to, subject, bodyLines = [] }) {
+  const params = new URLSearchParams({
+    view: "cm",
+    fs: "1",
+    to,
+    su: subject || "",
+    body: bodyLines && bodyLines.length ? bodyLines.join("\n") : "",
+  });
+  return `https://mail.google.com/mail/?${params.toString()}`;
+}
 
 export default function ContactModal({ open, onClose, LINKS }) {
   const overlayRef = useRef(null);
@@ -17,6 +29,62 @@ export default function ContactModal({ open, onClose, LINKS }) {
     return () => (document.documentElement.style.overflow = prev);
   }, [open]);
 
+  if (!open) return null;
+
+  // ======= Email compose + deep link =======
+  const emailAddress = LINKS.emailAddress || "";
+  const emailSubject = LINKS.emailSubject || "Liên hệ Cam Lành";
+  const emailBodyLines = LINKS.emailBodyLines || ["Chào Cam Lành,"];
+
+  const gmailCompose = buildGmailCompose({
+    to: emailAddress,
+    subject: emailSubject,
+    bodyLines: emailBodyLines,
+  });
+
+  const handleEmailClick = (e) => {
+    if (typeof navigator === "undefined") return; // SSR-safe
+    const ua = navigator.userAgent || "";
+    const isAndroid = /Android/i.test(ua);
+    const isIOS =
+      /iPad|iPhone|iPod/i.test(ua) ||
+      (/\bMacintosh\b/.test(ua) &&
+        typeof navigator.maxTouchPoints === "number" &&
+        navigator.maxTouchPoints > 1);
+
+    const body = emailBodyLines.join("\n");
+
+    if (isIOS) {
+      e.preventDefault();
+      const iosAppUrl = `googlegmail://co?to=${encodeURIComponent(
+        emailAddress
+      )}&subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(
+        body
+      )}`;
+      setTimeout(() => {
+        window.location.href = gmailCompose; // fallback web
+      }, 800);
+      window.location.href = iosAppUrl;
+      return;
+    }
+
+    if (isAndroid) {
+      e.preventDefault();
+      const intentUrl = `intent://compose?to=${encodeURIComponent(
+        emailAddress
+      )}&subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(
+        body
+      )}#Intent;scheme=mailto;package=com.google.android.gm;end`;
+      setTimeout(() => {
+        window.location.href = gmailCompose; // fallback web
+      }, 700);
+      window.location.href = intentUrl;
+      return;
+    }
+
+    // Desktop: để anchor mở web Gmail (target=_blank)
+  };
+
   const v = {
     hidden: { y: 24, opacity: 0 },
     visible: {
@@ -27,11 +95,8 @@ export default function ContactModal({ open, onClose, LINKS }) {
     exit: { y: 12, opacity: 0, transition: { duration: 0.2 } },
   };
 
-  if (!open) return null;
-
   return (
     <AnimatePresence>
-      {/* Overlay */}
       <motion.div
         ref={overlayRef}
         initial={{ opacity: 0 }}
@@ -42,7 +107,6 @@ export default function ContactModal({ open, onClose, LINKS }) {
           if (e.target === overlayRef.current) onClose?.();
         }}
       >
-        {/* Modal */}
         <motion.div
           variants={v}
           initial="hidden"
@@ -135,9 +199,12 @@ export default function ContactModal({ open, onClose, LINKS }) {
                 Zalo
               </a>
 
-              {/* Email */}
+              {/* Email → mobile ưu tiên app, desktop/web fallback */}
               <a
-                href={LINKS.email}
+                href={gmailCompose}
+                target="_blank"
+                rel="noreferrer"
+                onClick={handleEmailClick}
                 className="
                   group inline-flex items-center justify-center gap-2
                   rounded-2xl px-5 py-4 text-base font-semibold
@@ -148,7 +215,7 @@ export default function ContactModal({ open, onClose, LINKS }) {
                   focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600
                   focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900
                 "
-                aria-label={`Email ${LINKS.emailText}`}
+                aria-label={`Soạn email đến ${emailAddress}`}
               >
                 <Mail className="h-5 w-5 text-indigo-600 group-hover:text-white group-hover:scale-110 transition-transform duration-300" />
                 Email
@@ -208,10 +275,13 @@ export default function ContactModal({ open, onClose, LINKS }) {
               <span className="mx-2 text-gray-400">•</span>
               Email:{" "}
               <a
-                href={LINKS.email}
+                href={gmailCompose}
+                target="_blank"
+                rel="noreferrer"
+                onClick={handleEmailClick}
                 className="font-semibold text-indigo-700 dark:text-indigo-300 hover:underline underline-offset-4"
               >
-                {LINKS.emailText}
+                {LINKS.emailText || emailAddress}
               </a>
             </div>
 

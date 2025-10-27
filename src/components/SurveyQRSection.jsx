@@ -150,7 +150,9 @@ export default function SurveyQRSection({ id = "survey" }) {
                   <span className="text-sm text-gray-700 dark:text-gray-200">
                     Cần hỗ trợ thêm? Nhắn{" "}
                     <a
-                      href="https://m.me/camlanh"
+                      href="https://m.me/thinh.tran.218677"
+                      target="_blank"
+                      rel="noreferrer"
                       className="font-semibold hover:brightness-75 text-orange-600 dark:text-amber-300 hover:underline"
                     >
                       Messenger

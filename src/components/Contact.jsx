@@ -5,20 +5,123 @@ import { FaFacebookMessenger } from "react-icons/fa";
 import { MdTextsms } from "react-icons/md";
 import { useIsMobileCallDevice } from "../hooks/useIsMobileCallDevice";
 
+function buildMailto({ to, subject, bodyLines = [], cc = "", bcc = "" }) {
+  const params = new URLSearchParams();
+  if (subject) params.set("subject", subject);
+  if (bodyLines.length) params.set("body", bodyLines.join("\n"));
+  if (cc) params.set("cc", cc);
+  if (bcc) params.set("bcc", bcc);
+  const qs = params.toString();
+  return `mailto:${to}${qs ? `?${qs}` : ""}`;
+}
+
+function buildGmailCompose({ to, subject, bodyLines = [] }) {
+  const params = new URLSearchParams({
+    view: "cm",
+    fs: "1",
+    to,
+    su: subject || "",
+    body: bodyLines && bodyLines.length ? bodyLines.join("\n") : "",
+  });
+  return `https://mail.google.com/mail/?${params.toString()}`;
+}
+
 export default function QuickContactSection() {
+  const EMAIL = {
+    address: "thinhtdse182756@fpt.edu.vn",
+    subject: "Đặt hàng Cam Lành",
+    bodyLines: [
+      "Chào Shop Cam Lành,",
+      "",
+      "Tôi muốn đặt hàng:",
+      "- Mứt vỏ cam 100g x __",
+      "- Trà cam sấy 100g x __",
+      "- Túi treo đuổi côn trùng 30g x __",
+      "",
+      "Thông tin nhận hàng:",
+      "- Họ tên:",
+      "- SĐT:",
+      "- Địa chỉ:",
+      "- Ghi chú:",
+      "",
+      "Xin cảm ơn!",
+    ],
+    cc: "",
+    bcc: "",
+  };
+
+  // Dùng nếu muốn cho người dùng mở app mail mặc định (tuỳ chọn)
+  const mailtoHref = buildMailto({
+    to: EMAIL.address,
+    subject: EMAIL.subject,
+    bodyLines: EMAIL.bodyLines,
+    cc: EMAIL.cc,
+    bcc: EMAIL.bcc,
+  });
+
+  // Luôn có fallback sang Gmail web compose
+  const gmailCompose = buildGmailCompose({
+    to: EMAIL.address,
+    subject: EMAIL.subject,
+    bodyLines: EMAIL.bodyLines,
+  });
+
+  // 👉 Mobile: ưu tiên app Gmail; Desktop: mở web
+  const handleEmailClick = (e) => {
+    if (typeof navigator === "undefined") return; // SSR-safe
+    const ua = navigator.userAgent || "";
+    const isAndroid = /Android/i.test(ua);
+    const isIOS =
+      /iPad|iPhone|iPod/i.test(ua) ||
+      (/\bMacintosh\b/.test(ua) &&
+        typeof navigator.maxTouchPoints === "number" &&
+        navigator.maxTouchPoints > 1); // iPadOS
+
+    const body = EMAIL.bodyLines.join("\n");
+
+    if (isIOS) {
+      e.preventDefault();
+      const iosAppUrl = `googlegmail://co?to=${encodeURIComponent(
+        EMAIL.address
+      )}&subject=${encodeURIComponent(EMAIL.subject)}&body=${encodeURIComponent(
+        body
+      )}`;
+
+      // thử mở app, nếu không có -> về web
+      setTimeout(() => {
+        window.location.href = gmailCompose;
+      }, 800);
+      window.location.href = iosAppUrl;
+      return;
+    }
+
+    if (isAndroid) {
+      e.preventDefault();
+      const intentUrl = `intent://compose?to=${encodeURIComponent(
+        EMAIL.address
+      )}&subject=${encodeURIComponent(EMAIL.subject)}&body=${encodeURIComponent(
+        body
+      )}#Intent;scheme=mailto;package=com.google.android.gm;end`;
+
+      setTimeout(() => {
+        window.location.href = gmailCompose;
+      }, 700);
+      window.location.href = intentUrl;
+      return;
+    }
+
+    // Desktop: không preventDefault để href mở Gmail web (target=_blank)
+  };
+
   const LINKS = {
-    messenger: "https://m.me/camlanh",
-    zalo: "https://zalo.me/0900000000",
-    sms: "sms:+84900000000?body=Chao%20Cam%20Lanh%2C%20toi%20muon%20dat%20hang",
-    tel: "tel:+84900000000",
-    hotline: "0366 750 106",
-    email:
-      "mailto:hello@camlanh.vn?subject=%C4%90%E1%BA%B7t%20h%C3%A0ng%20Cam%20L%C3%A0nh&body=Ch%C3%A0o%20Cam%20L%C3%A0nh%2C%20t%C3%B4i%20mu%E1%BB%91n%20%C4%91%E1%BA%B7t%20h%C3%A0ng%3A%20...",
-    emailText: "hello@camlanh.vn",
+    messenger: "https://m.me/thinh.tran.218677",
+    zalo: "https://zalo.me/0967469298",
+    sms: "sms:+84967469298?body=Chao%20Cam%20Lanh%2C%20toi%20muon%20dat%20hang",
+    tel: "tel:+84967469298",
+    hotline: "0967 469 298",
   };
 
   const isMobileCallDevice = useIsMobileCallDevice();
-
   const [copied, setCopied] = useState(false);
 
   const copyHotline = async () => {
@@ -43,7 +146,11 @@ export default function QuickContactSection() {
       <div className="pointer-events-none absolute -top-24 -left-24 h-80 w-80 rounded-full bg-orange-500/10 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-amber-400/10 blur-3xl" />
 
-      <div className={`relative mx-auto px-4 sm:px-6 ${isMobileCallDevice ? "max-w-4xl" : "max-w-4xl"}`}>
+      <div
+        className={`relative mx-auto px-4 sm:px-6 ${
+          isMobileCallDevice ? "max-w-4xl" : "max-w-4xl"
+        }`}
+      >
         {/* Header */}
         <div className="mx-auto max-w-2xl text-center mb-6 sm:mb-8">
           <div className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-orange-100 to-amber-100 px-4 py-2 dark:from-orange-900/20 dark:to-amber-900/20">
@@ -52,17 +159,6 @@ export default function QuickContactSection() {
               Liên hệ tức thì
             </span>
           </div>
-          <h2 className="mt-4 text-3xl sm:text-4xl font-semibold tracking-tight">
-            <span className="bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">
-              Cần đặt cam
-            </span>{" "}
-            <span className="text-gray-900 dark:text-white">
-              — nhắn Cam Lành ngay
-            </span>
-          </h2>
-          <p className="mt-3 text-base sm:text-lg text-gray-600 dark:text-gray-300">
-            Chọn kênh bạn thích, đội ngũ phản hồi trong vài phút.
-          </p>
         </div>
 
         {/* Card */}
@@ -80,7 +176,6 @@ export default function QuickContactSection() {
             className={`
               grid gap-3 sm:gap-4
               ${
-                // nếu mobile -> có thể hiện 5 nút; desktop -> 3 nút
                 isMobileCallDevice
                   ? "grid-cols-2 sm:grid-cols-3 lg:grid-cols-5"
                   : "grid-cols-2 sm:grid-cols-3 lg:grid-cols-3"
@@ -128,9 +223,12 @@ export default function QuickContactSection() {
               <span className="group-hover:text-gray-700">Zalo</span>
             </a>
 
-            {/* Email luôn hiển thị (desktop & mobile đều xài được) */}
+            {/* Email → mobile ưu tiên app, desktop/web fallback */}
             <a
-              href={LINKS.email}
+              href={gmailCompose} // fallback khi JS tắt + desktop
+              target="_blank"
+              rel="noreferrer"
+              onClick={handleEmailClick} // mobile deep-link
               className="
                 group inline-flex items-center justify-center gap-2
                 rounded-2xl px-5 py-4 text-base font-semibold
@@ -140,13 +238,14 @@ export default function QuickContactSection() {
                 shadow-sm hover:shadow-md
                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-800
               "
-              aria-label={`Email ${LINKS.emailText}`}
+              aria-label={`Soạn email tới ${EMAIL.address}`}
+              title="Mở Gmail (app nếu có, hoặc web)"
             >
               <Mail className="h-5 w-5 text-indigo-600 group-hover:text-white group-hover:scale-110 transition-transform duration-300" />
               Email
             </a>
 
-            {/* Chỉ hiện trên mobile: SMS */}
+            {/* SMS (mobile) */}
             {isMobileCallDevice && (
               <a
                 href={LINKS.sms}
@@ -159,12 +258,12 @@ export default function QuickContactSection() {
                   shadow-sm hover:shadow-md
                 "
               >
-                <MdTextsms className="h-5 w-5 text-[#34C759] group-hover:text-white group-hover:scale-110 transition-transform duration-300" />
+                <MdTextsms className="h-5 w-5" />
                 SMS
               </a>
             )}
 
-            {/* Chỉ hiện trên mobile: Gọi ngay */}
+            {/* Gọi ngay (mobile) */}
             {isMobileCallDevice && (
               <a
                 href={LINKS.tel}
@@ -197,11 +296,21 @@ export default function QuickContactSection() {
               <span className="mx-2 text-gray-400">•</span>
               Email:{" "}
               <a
-                href={LINKS.email}
+                href={gmailCompose}
+                target="_blank"
+                rel="noreferrer"
+                onClick={handleEmailClick}
                 className="font-semibold text-indigo-600 dark:text-indigo-300 hover:underline underline-offset-4"
+                title="Mở Gmail (app nếu có, hoặc web)"
               >
-                {LINKS.emailText}
+                {EMAIL.address}
               </a>
+              {/* Nếu muốn cho tuỳ chọn mở app mail mặc định:
+              <span className="ml-2 text-gray-400">•</span>
+              <a href={mailtoHref} className="underline underline-offset-4">
+                Mở bằng ứng dụng email mặc định
+              </a>
+              */}
             </div>
 
             <button
@@ -246,7 +355,7 @@ export default function QuickContactSection() {
 
         {/* Info nhỏ */}
         <div className="mx-auto mt-6 text-center text-sm text-gray-600 dark:text-gray-400">
-          Hoạt động: 8:00–22:00 • Quận 10, TP.HCM
+          Hoạt động: 8:00–22:00 • Quận 9, TP.HCM
         </div>
       </div>
     </section>

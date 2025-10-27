@@ -140,7 +140,7 @@ export default function Footer() {
               <li className="group flex items-start gap-3">
                 <MapPin className="mt-0.5 h-4 w-4 text-orange-600 dark:text-orange-400" />
                 <span className="text-slate-600 dark:text-gray-400 group-hover:text-slate-800 dark:group-hover:text-gray-300 transition-colors">
-                  Quận 10, TP.HCM
+                  Quận 9, TP.HCM
                 </span>
               </li>
               <li className="group flex items-start gap-3">
