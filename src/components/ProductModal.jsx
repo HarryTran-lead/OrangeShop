@@ -125,7 +125,7 @@ export default function ProductModal({ product, onClose, onOrder }) {
 
                   <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                     <BadgeCheck className="h-4 w-4 text-green-600 dark:text-green-400" />
-                    Nguyên liệu đạt chuẩn VietGAP – không phẩm màu tổng hợp.
+                    Nguyên liệu sạch – không thuốc, phẩm màu tổng hợp.
                   </div>
 
                   {/* QUICK FACTS */}
@@ -136,7 +136,7 @@ export default function ProductModal({ product, onClose, onOrder }) {
                         <span className="text-xs font-semibold">Nguồn cam</span>
                       </div>
                       <div className="mt-1 text-xs text-gray-600 dark:text-gray-400">
-                        VietGAP • truy xuất vườn
+                        Chọn lọc từ vườn – truy xuất rõ ràng, an toàn tự nhiên.
                       </div>
                     </div>
                     <div className="rounded-xl border border-gray-200 bg-white p-3 dark:border-gray-800 dark:bg-gray-900">
@@ -145,7 +145,7 @@ export default function ProductModal({ product, onClose, onOrder }) {
                         <span className="text-xs font-semibold">Quy cách</span>
                       </div>
                       <div className="mt-1 text-xs text-gray-600 dark:text-gray-400">
-                        Đóng gói sạch, hút ẩm
+                        Đóng gói sạch, hút ẩm – bảo quản hương vị tốt nhất.
                       </div>
                     </div>
                     <div className="rounded-xl border border-gray-200 bg-white p-3 dark:border-gray-800 dark:bg-gray-900">
@@ -154,7 +154,7 @@ export default function ProductModal({ product, onClose, onOrder }) {
                         <span className="text-xs font-semibold">Giao hàng</span>
                       </div>
                       <div className="mt-1 text-xs text-gray-600 dark:text-gray-400">
-                        Nội thành: trong ngày
+                        Nội thành giao trong ngày – đảm bảo tươi mới khi nhận.
                       </div>
                     </div>
                   </div>

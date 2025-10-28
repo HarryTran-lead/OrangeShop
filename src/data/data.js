@@ -2,8 +2,8 @@ import { Award, Package, Clock, Shield } from "lucide-react";
 export const features = [
   {
     icon: "🍊",
-    title: "Cam tươi VietGAP",
-    desc: "Nguồn cam chuẩn chất lượng, truy xuất được nông trại.",
+    title: "Cam tươi chọn lọc",
+    desc: "Nguồn cam đạt chuẩn chất lượng, truy xuất rõ nông trại.",
   },
   {
     icon: "🧼",
@@ -15,34 +15,8 @@ export const features = [
 export const dishes = [
   {
     id: 1,
-    name: "Cam tươi loại 1 (1kg)",
-    price: 45000,
-    rating: 4.8,
-    img: "/images/cam-tuoi.jpg",
-    description:
-      "Cam tươi VietGAP loại 1 được tuyển chọn theo lô tại vườn, độ chín 80–90% để đảm bảo vị ngọt thanh và hàm lượng vitamin C tối ưu. Vỏ dày vừa phải, tép cam mọng nước, cân bằng giữa vị chua nhẹ và hậu ngọt dễ chịu. Phù hợp ăn tươi, ép lạnh, làm salad trái cây hoặc ướp sốt cam cho các món nướng.",
-    videoUrl: "https://www.youtube.com/embed/k55yQv8c8r0",
-    process: [
-      "Thu hái chọn lọc theo tiêu chuẩn VietGAP, loại bỏ quả trầy xước hoặc dập cơ học.",
-      "Sơ chế tại trạm: phân cỡ, rửa bằng nước ozon, làm ráo, kiểm tra vỏ.",
-      "Đóng gói khay thoáng khí, dán tem truy xuất nguồn gốc lô – vườn – ngày hái.",
-      "Bảo quản mát 8–12°C trong quá trình vận chuyển để giữ độ tươi.",
-    ],
-    steps: [
-      "Rửa nhanh dưới vòi nước trước khi ăn/ép, không ngâm lâu để tránh thất thoát vitamin.",
-      "Ép lạnh 100% hoặc pha 70% nước cam + 30% soda, thêm vài lá bạc hà cho vị tươi.",
-      "Làm salad: trộn tép cam, xà lách, hạnh nhân rang, sốt chua ngọt nhẹ.",
-    ],
-    tips: [
-      "Bảo quản nơi thoáng mát 18–22°C; nếu tủ mát, để ngăn rau 7–10 ngày.",
-      "Tránh để chung quá lâu với chuối/táo (phát ethylene làm cam nhanh chín).",
-      "Nếu cần ướp sốt, dùng cả vỏ cam bào mịn (zest) để tăng mùi tinh dầu tự nhiên.",
-    ],
-  },
-  {
-    id: 2,
     name: "Mứt vỏ cam 100g",
-    price: 52000,
+    price: 35000,
     rating: 4.7,
     img: "/images/mut-vo-cam.jpg",
     description:
@@ -66,9 +40,9 @@ export const dishes = [
     ],
   },
   {
-    id: 3,
+    id: 2,
     name: "Trà cam sấy 100g",
-    price: 59000,
+    price: 25000,
     rating: 4.6,
     img: "/images/tra-cam-say.jpg",
     description:
@@ -91,7 +65,7 @@ export const dishes = [
     ],
   },
   {
-    id: 4,
+    id: 3,
     name: "Túi treo đuổi muỗi 30g",
     price: 39000,
     rating: 4.5,
@@ -116,38 +90,13 @@ export const dishes = [
     ],
   },
   {
-    id: 5,
-    name: "Marmalade cam (hũ 200g)",
-    price: 79000,
-    rating: 4.7,
-    img: "/images/marmalade.jpg",
-    description:
-      "Marmalade cam vị ngọt thanh, chút the nhẹ từ vỏ cam, kết cấu sệt vừa có tép vỏ rõ ràng. Rất hợp phết bánh mì – scone, làm sốt salad trái cây, sốt cam cho thịt nướng hoặc pha trà cam mật nhanh chóng.",
-    videoUrl: "https://www.youtube.com/embed/9rXg8mYlZ0I",
-    process: [
-      "Nấu theo tỉ lệ đường thấp, tận dụng pectin tự nhiên từ vỏ cam.",
-      "Khử bọt kỹ, chiết rót nóng và thanh trùng nhẹ để ổn định.",
-      "Đóng hũ thuỷ tinh, dán tem date/lot, kiểm soát Brix & pH theo mẻ.",
-    ],
-    steps: [
-      "Phết trực tiếp lên bánh mì/scone, thêm bơ lạt để cân vị.",
-      "Làm sốt salad: marmalade + dầu olive + muối tiêu + giấm táo.",
-      "Pha nhanh: 1 muỗng marmalade + 150ml nước ấm, khuấy đều.",
-    ],
-    tips: [
-      "Bảo quản mát sau khi mở, dùng trong 20–30 ngày.",
-      "Luôn dùng muỗng khô, sạch để tránh nhiễm ẩm và mốc.",
-      "Nếu muốn loãng hơn, có thể khuấy với chút nước ấm ngay trong hũ.",
-    ],
-  },
-  {
-    id: 6,
+    id: 4,
     name: "Combo trà cam + mứt",
-    price: 109000,
+    price: 69300,
     rating: 4.9,
     img: "/images/combo-tra-mut.jpg",
     description:
-      "Combo tiết kiệm gồm trà cam sấy nguyên lát và mứt vỏ cam thủ công – đa dụng cho gia đình, văn phòng và làm quà tặng. Dễ pha chế nhiều kiểu: trà nóng, trà lạnh, soda cam mật; dùng kèm bánh mì, bánh ngọt, yogurt.",
+      "Combo tiết kiệm gồm trà cam sấy nguyên lát và mứt vỏ cam thủ công – đa dụng cho gia đình, văn phòng và làm quà tặng. Giá ưu đãi hơn 10–15% so với mua lẻ từng món.",
     videoUrl: "https://www.youtube.com/embed/4m0c9s5bE1M",
     process: [
       "Lát cam sấy lạnh đến độ ẩm ≤10% để bảo toàn hương và màu.",
@@ -243,9 +192,9 @@ export const philosophyValues = [
 
 export const whyChoose = [
   {
-    icon: "Award",
-    title: "VietGAP Chứng Nhận",
-    desc: "Cam tươi đạt chuẩn an toàn thực phẩm quốc gia, quy trình canh tác, thu hái và bảo quản tuân thủ VietGAP.",
+    icon: "Star",
+    title: "Chất Lượng Tuyển Chọn",
+    desc: "Nguyên liệu cam được chọn từ những vườn đạt chuẩn, đảm bảo độ chín, hương vị và độ ngọt tự nhiên cao nhất.",
   },
   {
     icon: "Package",
@@ -262,8 +211,6 @@ export const whyChoose = [
     title: "Cam Kết 100%",
     desc: "Hoàn tiền nếu không hài lòng về chất lượng, đổi trả nhanh gọn, hỗ trợ tận tâm.",
   },
-
-  // ✨ Thêm 4 mục mới
   {
     icon: "Leaf",
     title: "Minh Bạch Nguồn Gốc",

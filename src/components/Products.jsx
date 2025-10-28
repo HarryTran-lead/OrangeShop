@@ -77,7 +77,7 @@ export default function Products() {
               </span>
             </>
           }
-          subtitle="Mỗi sản phẩm là hành trình từ vườn cam VietGAP đến tay bạn, qua quy trình chế biến thủ công với tâm huyết."
+          subtitle="Mỗi sản phẩm là hành trình từ vườn cam đến tay bạn, qua quy trình chế biến thủ công với tâm huyết."
           titleClassName="text-[2.1rem] leading-tight md:text-5xl lg:text-5xl"
         />
 
