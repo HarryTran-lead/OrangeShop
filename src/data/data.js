@@ -92,7 +92,7 @@ export const dishes = [
   {
     id: 4,
     name: "Combo trà cam + mứt",
-    price: 69300,
+    price: 70000,
     rating: 4.9,
     img: "/images/combo-tra-mut.jpg",
     description:
