@@ -286,7 +286,7 @@ export default function ContactModal({ open, onClose, LINKS }) {
             </div>
 
             <div className="mt-1 text-center text-xs text-gray-500 dark:text-gray-400">
-              Hoạt động: 8:00–22:00 • Quận 10, TP.HCM
+              Hoạt động: 8:00–22:00 • Quận 9, TP.HCM
             </div>
           </div>
         </motion.div>
