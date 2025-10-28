@@ -95,7 +95,7 @@ export default function Footer() {
               </h4>
               <ul className="space-y-3">
                 <li>
-                  <LinkItem href="#hero">Trang Chủ</LinkItem>
+                  <LinkItem href="#hero">Giới Thiệu</LinkItem>
                 </li>
                 <li>
                   <LinkItem href="#products">Sản Phẩm</LinkItem>
@@ -103,29 +103,23 @@ export default function Footer() {
                 <li>
                   <LinkItem href="#philosophy">Triết Lý</LinkItem>
                 </li>
-                <li>
-                  <LinkItem href="#testimonials">Đánh Giá</LinkItem>
-                </li>
               </ul>
             </div>
 
             {/* Hỗ trợ */}
             <div>
               <h4 className="mb-5 text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-white">
-                Hỗ Trợ
+                Kết Nối
               </h4>
               <ul className="space-y-3">
                 <li>
-                  <LinkItem href="#">Chính Sách</LinkItem>
+                  <LinkItem href="#why">Vì Sao Chọn</LinkItem>
                 </li>
                 <li>
-                  <LinkItem href="#">Điều Khoản</LinkItem>
+                  <LinkItem href="#contact">Liên Hệ</LinkItem>
                 </li>
                 <li>
-                  <LinkItem href="#">Vận Chuyển</LinkItem>
-                </li>
-                <li>
-                  <LinkItem href="#">FAQ</LinkItem>
+                  <LinkItem href="#survey">Khảo Sát</LinkItem>
                 </li>
               </ul>
             </div>
@@ -152,19 +146,19 @@ export default function Footer() {
               <li className="group flex items-start gap-3">
                 <Phone className="mt-0.5 h-4 w-4 text-orange-600 dark:text-orange-400" />
                 <a
-                  href="tel:0900000000"
+                  href="tel:0967469298"
                   className="text-slate-600 dark:text-gray-400 group-hover:text-slate-800 dark:group-hover:text-gray-300 transition-colors"
                 >
-                  090 000 0000
+                  0967 469 298
                 </a>
               </li>
               <li className="group flex items-start gap-3">
                 <Mail className="mt-0.5 h-4 w-4 text-orange-600 dark:text-orange-400" />
                 <a
-                  href="mailto:hello@camlanh.vn"
+                  href="mailto:thinhtdse182756@fpt.edu.vn"
                   className="text-slate-600 dark:text-gray-400 group-hover:text-slate-800 dark:group-hover:text-gray-300 transition-colors"
                 >
-                  hello@camlanh.vn
+                  thinhtdse182756@fpt.edu.vn
                 </a>
               </li>
             </ul>
