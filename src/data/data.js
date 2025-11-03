@@ -21,7 +21,7 @@ export const dishes = [
     img: "/images/mut-vo-cam.jpg",
     description:
       "Mứt vỏ cam thủ công giữ trọn hương tinh dầu tự nhiên: dẻo mềm, ngọt vừa, the nhẹ ở cuối vị. Sên nhiệt thấp để bảo toàn mùi thơm đặc trưng, hoàn hảo cho trà ấm, bánh mì bơ, yogurt hoặc làm topping bánh ngọt.",
-    videoUrl: "https://www.youtube.com/embed/xnL2nI0ZWMQ",
+    videoUrl: "https://www.youtube.com/embed/9E2gMtQPeYc",
     process: [
       "Bào vỏ cam, loại bỏ phần cùi trắng đắng; chần – xả nhiều lần để dịu vị.",
       "Sên với đường mía và một ít mạch nha ở nhiệt thấp 45–55 phút.",
@@ -47,7 +47,7 @@ export const dishes = [
     img: "/images/tra-cam-say.jpg",
     description:
       "Trà cam sấy nguyên lát, màu vàng hổ phách đẹp mắt, hương cam ấm dịu. Công nghệ sấy lạnh giúp giữ lại flavonoid và vitamin một cách tối ưu. Dễ pha, hợp khẩu vị cả nóng lẫn lạnh, đặc biệt khi phối cùng quế – mật ong – gừng.",
-    videoUrl: "https://www.youtube.com/embed/3p0k5m5e3dE",
+    videoUrl: "https://www.youtube.com/embed/ufFvwjxRYI4",
     process: [
       "Rửa – thái lát 2–3mm, ngâm nước muối loãng 5–7 phút rồi để ráo.",
       "Sấy lạnh 45–50°C trong 10–14 giờ để giữ màu và hương.",
@@ -72,7 +72,7 @@ export const dishes = [
     img: "/images/tinh-dau-cam.jpg",
     description:
       "Tinh dầu cam ép lạnh 100% từ vỏ cam tươi, hương thơm ngọt dịu giúp thư giãn, khử mùi và đuổi côn trùng nhẹ tự nhiên. Phù hợp cho máy khuếch tán, xông phòng, nhỏ vào túi thơm hoặc pha loãng để lau sàn.",
-    videoUrl: "https://www.youtube.com/embed/6tZ9z7YJfWE",
+    videoUrl: "https://www.youtube.com/embed/oyuXjl3uOPs",
     process: [
       "Thu gom vỏ cam tươi, rửa sạch và phơi ráo nhẹ.",
       "Ép lạnh để giữ nguyên mùi hương và hoạt chất tự nhiên (limonene).",
@@ -87,83 +87,6 @@ export const dishes = [
       "Tránh để tinh dầu tiếp xúc trực tiếp với da chưa pha loãng.",
       "Bảo quản nơi thoáng mát, tránh ánh nắng trực tiếp.",
       "Đậy kín nắp sau khi dùng để hạn chế bay hơi tinh dầu.",
-    ],
-  },
-
-  {
-    id: 4,
-    name: "Combo trà cam + mứt",
-    price: 49000,
-    rating: 4.9,
-    img: "/images/combo-tra-mut.jpg",
-    description:
-      "Combo tiết kiệm gồm trà cam sấy nguyên lát và mứt vỏ cam thủ công – đa dụng cho gia đình, văn phòng và làm quà tặng. Giá ưu đãi hơn 10–15% so với mua lẻ từng món.",
-    videoUrl: "https://www.youtube.com/embed/4m0c9s5bE1M",
-    process: [
-      "Lát cam sấy lạnh đến độ ẩm ≤10% để bảo toàn hương và màu.",
-      "Mứt vỏ cam sên nhiệt thấp, đóng gói chống ẩm riêng từng loại.",
-      "Đóng combo hộp giấy kraft, tem niêm, tờ hướng dẫn pha – dùng.",
-    ],
-    steps: [
-      "Trà nóng: 1–2 lát cam + 200–250ml nước 90°C + 1 thìa mứt, ủ 3–5 phút.",
-      "Đồ lạnh: thêm đá và soda cho vị tươi; trang trí lát cam mỏng.",
-      "Bữa sáng: bánh mì bơ + mứt; tráng miệng với yogurt + mứt cắt sợi.",
-    ],
-    tips: [
-      "Bảo quản nơi khô ráo; luôn đóng kín túi trà và hũ mứt sau khi dùng.",
-      "Tránh ẩm cao để lát cam không mềm lại; dùng gói hút ẩm kèm theo.",
-      "Combo phù hợp làm quà Tết/sinh nhật/housewarming – có thể kèm thiệp.",
-    ],
-  },
-  {
-  id: 5,
-  name: "Combo Trà Cam + Tinh Dầu",
-  price: 64000,
-  rating: 4.8,
-  img: "/images/combo-tra-tinhdau.jpg",
-  description:
-    "Sự kết hợp hài hòa giữa Trà vỏ cam sấy thanh mát và Tinh dầu cam nguyên chất thư giãn. Combo giúp thanh lọc cơ thể, cải thiện giấc ngủ và lan tỏa hương thơm tự nhiên cho không gian sống.",
-  videoUrl: "https://www.youtube.com/embed/1v82yJzE5zE",
-  process: [
-    "Chọn cam tươi sạch, rửa kỹ, tách vỏ và sấy lạnh giữ nguyên tinh chất.",
-    "Chiết ép tinh dầu từ vỏ cam tươi bằng phương pháp chưng cất hơi nước.",
-    "Đóng gói trong lọ thủy tinh và túi trà bảo quản kín, đảm bảo chất lượng hương vị.",
-  ],
-  steps: [
-    "Pha 1–2 lát trà cam với nước ấm 80–90°C, ủ trong 3–5 phút.",
-    "Khuếch tán 3–5 giọt tinh dầu cam trong máy xông hoặc đèn aroma.",
-    "Sử dụng mỗi ngày để cơ thể và tâm trí được thư giãn, tinh thần sảng khoái.",
-  ],
-  tips: [
-    "Dùng trà cam buổi sáng giúp thanh lọc và tỉnh táo nhẹ nhàng.",
-    "Kết hợp tinh dầu cam vào buổi tối giúp dễ ngủ và giảm căng thẳng.",
-    "Bảo quản sản phẩm nơi khô ráo, tránh ánh nắng trực tiếp.",
-  ],
-},
-
-  {
-    id: 6,
-    name: "Combo Trà + Mứt + Tinh Dầu",
-    price: 89000,
-    rating: 5.0,
-    img: "/images/combo-3.jpg",
-    description:
-      "Bộ quà tặng 3 trong 1 từ cam tự nhiên gồm: Trà vỏ cam sấy, Mứt cam dẻo vị thanh, và Tinh dầu cam nguyên chất. Mỗi sản phẩm đều được chế biến thủ công, lưu giữ hương vị và năng lượng tươi mới từ cam Việt.",
-    videoUrl: "https://www.youtube.com/embed/rsvRzYwM8fE",
-    process: [
-      "Chọn cam tươi, tách vỏ – sấy lạnh bảo toàn hương và màu.",
-      "Nấu mứt cam dẻo kết hợp mật ong và một chút gừng để cân vị.",
-      "Ép lạnh vỏ cam tươi để chắt lọc tinh dầu nguyên chất, đóng lọ thủy tinh nhỏ.",
-    ],
-    steps: [
-      "Dùng trà cam mỗi sáng để thanh lọc cơ thể, tăng vitamin C tự nhiên.",
-      "Thưởng thức mứt cam kèm trà nóng, hoặc dùng làm topping bánh, yogurt.",
-      "Khuếch tán vài giọt tinh dầu cam giúp thư giãn và khử mùi không gian.",
-    ],
-    tips: [
-      "Phù hợp làm quà biếu tinh tế cho bạn bè, thầy cô hoặc đối tác.",
-      "Bảo quản trà và mứt nơi khô ráo; tránh ánh nắng trực tiếp.",
-      "Đậy kín lọ tinh dầu sau khi dùng để hương không bay hơi.",
     ],
   },
 ];
